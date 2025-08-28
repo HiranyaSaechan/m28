@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cylinder Calculator</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .block {
+      border: 1px dashed gray;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    img {
+      display: block;
+      margin: auto;
+    }
+  </style>
+</head>
+<body class="container mt-3">
+
+  <!-- Block 1 -->
+  <div class="block">
+    <h1 class="text-center">Cylinder</h1>
+    <p>
+      A cylinder is a fundamental 3D shape in geometry, which has two parallel circular bases at equal distances. 
+      LPG gas cylinder is one such example of a cylinder in real life.
+    </p>
+    <p>
+      The radius of a cylinder (r) is the radius of the 2 bases found at the top and the bottom of the cylinder. 
+      The height of the cylinder (h) is the distance between the two circular bases is called the h. 
+      The volume of the cylinder (V) can be derived as shown in the picture below.
+    </p>
+  </div>
+
+  <!-- แถวล่าง 3 คอลัมน์ -->
+  <div class="row">
+    <!-- Block 2 -->
+    <div class="col-sm-4">
+      <div class="block text-center">
+        <img src="tank.jpg" alt="Cylinder tank" height="150">
+        <p>Cylinder tank <br><a href="https://pixabay.com">Source: Pixabay</a></p>
+      </div>
+    </div>
+
+    <!-- Block 3 -->
+    <div class="col-sm-4">
+      <div class="block text-center">
+        <h2>Cylinder volume</h2>
+        <img src="cylinder.png" alt="Cylinder volume" height="150">
+      </div>
+    </div>
+
+    <!-- Block 4 -->
+    <div class="col-sm-4">
+      <div class="block">
+        <h2>Volume calculator</h2>
+        <form id="calcForm">
+          <div class="mb-2">
+            <label>Radius:</label>
+            <input type="number" id="radius" class="form-control" required>
+          </div>
+          <div class="mb-2">
+            <label>Height:</label>
+            <input type="number" id="height" class="form-control" required>
+          </div>
+          <div class="mb-2">
+            <label>Unit:</label>
+            <select id="unit" class="form-select">
+              <option value="cm">cm</option>
+              <option value="mm">mm</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+        <p id="result" class="mt-2"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById("calcForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let r = parseFloat(document.getElementById("radius").value);
+      let h = parseFloat(document.getElementById("height").value);
+      let unit = document.getElementById("unit").value;
+
+      if(unit === "mm"){
+        r = r / 10;
+        h = h / 10;
+      }
+
+      let volume = Math.PI * r * r * h; // V = πr²h
+      volume = volume.toFixed(2);
+
+      document.getElementById("result").innerHTML = `Volume = ${volume} cm³`;
+    });
+  </script>
+
+</body>
+</html>
