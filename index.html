@@ -1,35 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cylinder Calculator</title>
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    .block {
-      border: 1px dashed gray;
-      padding: 10px;
-      margin-bottom: 10px;
-    }
-    img {
-      display: block;
-      margin: auto;
-    }
-  </style>
+
 </head>
+
 <body class="container mt-3">
 
   <!-- Block 1 -->
   <div class="block">
     <h1 class="text-center">Cylinder</h1>
     <p>
-      A cylinder is a fundamental 3D shape in geometry, which has two parallel circular bases at equal distances. 
+      A cylinder is a fundamental 3D shape in geometry, which has two parallel circular bases at equal distances.
       LPG gas cylinder is one such example of a cylinder in real life.
     </p>
     <p>
-      The radius of a cylinder (r) is the radius of the 2 bases found at the top and the bottom of the cylinder. 
-      The height of the cylinder (h) is the distance between the two circular bases is called the h. 
+      The radius of a cylinder (r) is the radius of the 2 bases found at the top and the bottom of the cylinder.
+      The height of the cylinder (h) is the distance between the two circular bases is called the h.
       The volume of the cylinder (V) can be derived as shown in the picture below.
     </p>
   </div>
@@ -38,35 +30,38 @@
   <div class="row">
     <!-- Block 2 -->
     <div class="col-sm-4">
-      <div class="block text-center">
-        <img src="tank.jpg" alt="Cylinder tank" height="150">
-        <p>Cylinder tank <br><a href="https://pixabay.com/photos/factory-storage-tank-chemistry-644982/">Source: Pixabay</a></p>
+      <div class="block equal-height text-center">
+        <img src="tank.jpg" alt="Cylinder tank">
+        <p>
+          Cylinder tank <br>
+          <a href="https://pixabay.com/photos/factory-storage-tank-chemistry-644982/">Source: Pixabay</a>
+        </p>
       </div>
     </div>
 
     <!-- Block 3 -->
     <div class="col-sm-4">
-      <div class="block text-center">
+      <div class="block equal-height text-center">
         <h2>Cylinder volume</h2>
-        <img src="cylinder.png" alt="Cylinder volume" height="150">
+        <img src="cylinder.png" alt="Cylinder volume">
       </div>
     </div>
 
     <!-- Block 4 -->
     <div class="col-sm-4">
-      <div class="block">
+      <div class="block equal-height">
         <h2>Volume calculator</h2>
         <form id="calcForm">
-          <div class="mb-2">
-            <label>Radius:</label>
-            <input type="number" id="radius" class="form-control" required>
+          <div class="mb-2 d-flex align-items-center">
+            <label for="radius" class="me-2" style="width:70px;">Radius:</label>
+            <input type="text" id="radius" class="form-control" required>
           </div>
-          <div class="mb-2">
-            <label>Height:</label>
-            <input type="number" id="height" class="form-control" required>
+          <div class="mb-2 d-flex align-items-center">
+            <label for="height" class="me-2" style="width:70px;">Height:</label>
+            <input type="text" id="height" class="form-control" required>
           </div>
-          <div class="mb-2">
-            <label>Unit:</label>
+          <div class="mb-2 d-flex align-items-center">
+            <label for="unit" class="me-2" style="width:70px;">Unit:</label>
             <select id="unit" class="form-select">
               <option value="cm">cm</option>
               <option value="mm">mm</option>
@@ -79,16 +74,36 @@
     </div>
   </div>
 
+  <style>
+    .block {
+      border: 1px dashed gray;
+      padding: 10px;
+      margin-bottom: 10px;
+      height: 100%;
+    }
+
+    .equal-height {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    img {
+      height: 150px;
+      display: block;
+      margin: auto;
+    }
+  </style>
   <!-- JavaScript -->
   <script>
-    document.getElementById("calcForm").addEventListener("submit", function(e) {
+    document.getElementById("calcForm").addEventListener("submit", function (e) {
       e.preventDefault();
 
       let r = parseFloat(document.getElementById("radius").value);
       let h = parseFloat(document.getElementById("height").value);
       let unit = document.getElementById("unit").value;
 
-      if(unit === "mm"){
+      if (unit === "mm") {
         r = r / 10;
         h = h / 10;
       }
@@ -101,4 +116,5 @@
   </script>
 
 </body>
+
 </html>
